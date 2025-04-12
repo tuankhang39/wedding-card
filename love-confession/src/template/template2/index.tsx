@@ -14,7 +14,7 @@ const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi3.webp`,
   `${config.BASE_PATH}template1/anhcuoi4.webp`,
   `${config.BASE_PATH}template1/anhcuoi5.jpg`,
-  `${config.BASE_PATH}template1/anhcuoi6.webp`,
+  `${config.BASE_PATH}template1/anhcuoi6.jpg`,
 ];
 
 const data = {
@@ -66,7 +66,7 @@ const Template2 = () => {
   };
 
   return (
-    <div className=" text-black font-roboto overflow-x-hidden relative">
+    <div className=" text-black font-roboto overflow-x-hidden relative bg-white">
       {!shouldRender && (
         <div className="w-full h-[100vh]">
           <img
