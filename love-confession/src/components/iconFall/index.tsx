@@ -52,7 +52,7 @@ const Snowfall = (props: SnowfallProps) => {
             color: "#fff",
           }}
         >
-          <img src={`/template1/${icon}`} />
+          <img src={icon} />
         </div>
       ))}
     </>

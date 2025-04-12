@@ -6,14 +6,15 @@ import Parent from "../../components/parent";
 import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
 import Calendar from "../../components/calendar";
+import config from "../../config/envConfig";
 
 const weddingImages = [
-  "/template1/anhcuoi1.webp",
-  "/template1/anhcuoi2.webp",
-  "/template1/anhcuoi3.webp",
-  "/template1/anhcuoi4.webp",
-  "/template1/anhcuoi5.jpg",
-  "/template1/anhcuoi6.webp",
+  `${config.BASE_PATH}template1/anhcuoi1.webp`,
+  `${config.BASE_PATH}template1/anhcuoi2.webp`,
+  `${config.BASE_PATH}template1/anhcuoi3.webp`,
+  `${config.BASE_PATH}template1/anhcuoi4.webp`,
+  `${config.BASE_PATH}template1/anhcuoi5.jpg`,
+  `${config.BASE_PATH}template1/anhcuoi6.webp`,
 ];
 
 const data = {
@@ -70,19 +71,19 @@ const Template2 = () => {
         <div className="w-full h-[100vh]">
           <img
             style={a}
-            src="/template2/happyButton.png"
+            src={`${config.BASE_PATH}template2/happyButton.png`}
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[20vw] max-w-none z-50"
             onClick={toggleContent}
           />
           <div className="flex absolute z-40 w-full">
             <img
               style={contentWrapperStyle("-100%")}
-              src="/template2/layout.jpg"
+              src={`${config.BASE_PATH}template2/layout.jpg`}
               className="w-[50%] h-[100vh] object-cover object-left sm:w-full sm:object-center "
             />
             <img
               style={contentWrapperStyle("100%")}
-              src="/template2/layout.jpg"
+              src={`${config.BASE_PATH}template2/layout.jpg`}
               className="w-[50%] h-[100vh] object-cover object-right sm:w-full sm:object-center"
             />
           </div>
@@ -99,7 +100,7 @@ const Template2 = () => {
           </p>
           <Parent {...data} />
           <img
-            src="/template1/line.png"
+            src={`${config.BASE_PATH}template1/line.png`}
             className="w-full rounded-t-[40%] my-3"
           />
           <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />

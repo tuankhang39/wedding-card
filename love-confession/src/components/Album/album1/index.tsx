@@ -24,7 +24,7 @@ const Album1 = (props: Album1) => {
             className="border-[10px]"
             data-aos={isEven(index + 1) ? "fade-left" : "fade-right"}
           >
-            <img src={`/template1/${img}`} className="w-full" />
+            <img src={`${img}`} className="w-full" />
           </div>
         ))}
       </div>

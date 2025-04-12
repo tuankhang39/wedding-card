@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Typewriter from "../../typeWriter";
+import config from "../../../config/envConfig";
 
 interface FadeImagesNoPositionProps {
   images: string[];
@@ -12,7 +13,7 @@ const FadeImagesNoPosition = (props: FadeImagesNoPositionProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
-    }, 200);
+    }, 500);
     const stopTimeout = setTimeout(() => {
       clearInterval(interval);
       setIndex(1);
@@ -27,7 +28,7 @@ const FadeImagesNoPosition = (props: FadeImagesNoPositionProps) => {
     <div>
       <audio
         ref={audioRef}
-        src="/audio/causeiloveyou.mp3"
+        src={`${config.BASE_PATH}/audio/causeiloveyou.mp3`}
         preload="auto"
         autoPlay
       />

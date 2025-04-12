@@ -13,14 +13,15 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import "./style.scss";
+import config from "../../config/envConfig";
 
 const weddingImages = [
-  "anhcuoi1.webp",
-  "anhcuoi2.webp",
-  "anhcuoi3.webp",
-  "anhcuoi4.webp",
-  "anhcuoi5.jpg",
-  "anhcuoi6.webp",
+  `${config.BASE_PATH}template1/anhcuoi1.webp`,
+  `${config.BASE_PATH}template1/anhcuoi2.webp`,
+  `${config.BASE_PATH}template1/anhcuoi3.webp`,
+  `${config.BASE_PATH}template1/anhcuoi4.webp`,
+  `${config.BASE_PATH}template1/anhcuoi5.jpg`,
+  `${config.BASE_PATH}template1/anhcuoi6.webp`,
 ];
 
 const data = {
@@ -37,13 +38,13 @@ const data = {
 const theme = {
   gray: {
     background: "#514b45",
-    fall: "lathong.png",
-    iconTop: "/template1/Picture1.png",
+    fall: `${config.BASE_PATH}template1/lathong.png`,
+    iconTop: `${config.BASE_PATH}/template1/Picture1.png`,
   },
   red: {
     background: "#7c212b",
-    fall: "hoaanhdao.png",
-    iconTop: "/template1/longden.gif",
+    fall: `${config.BASE_PATH}template1/hoaanhdao.png`,
+    iconTop: `${config.BASE_PATH}/template1/longden.gif`,
   },
 };
 
@@ -79,13 +80,13 @@ export default function LoveConfessionPage() {
         </p>
         <Parent {...data} />
         <img
-          src="/template1/line.png"
+          src={`${config.BASE_PATH}/template1/line.png`}
           className="w-full rounded-t-[40%] my-3"
         />
         <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />
         <img
           data-aos="zoom-in"
-          src="/template1/anhcuoi1.jpg"
+          src={`${config.BASE_PATH}template1/anhcuoi1.jpg`}
           className="w-full rounded-t-[40%] my-3"
         />
       </div>
