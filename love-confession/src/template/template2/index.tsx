@@ -7,6 +7,9 @@ import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
 import Calendar from "../../components/calendar";
 import config from "../../config/envConfig";
+import CountdownTimer from "../../components/timer";
+import Location from "../../components/location";
+import Album1 from "../../components/Album/album1";
 
 const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi1.webp`,
@@ -27,6 +30,7 @@ const data = {
     mother: "Trần Lệ Thu",
   },
 };
+const target = "2025-04-30T10:00:00";
 
 const Template2 = () => {
   const [show, setShow] = useState(true);
@@ -90,6 +94,7 @@ const Template2 = () => {
         </div>
       )}
       {shouldRender && <FadeImagesNoPosition images={weddingImages} />}
+
       {shouldRender1 && (
         <div>
           <p
@@ -107,10 +112,15 @@ const Template2 = () => {
           <div>
             <Letter />
             <div className="p-5 pt-0">
-              {/* <CountdownTimer targetDate={target} /> */}
+              <CountdownTimer targetDate={target} />
               <Calendar />
             </div>
           </div>
+          <Location
+            address="123/12 Nguyen Van Linh Q1, Hồ Chí MInh"
+            home="Tư gia chúng tôi"
+          />
+          <Album1 weddingImages={weddingImages} />
         </div>
       )}
     </div>
