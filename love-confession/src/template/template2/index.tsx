@@ -5,7 +5,6 @@ import "aos/dist/aos.css";
 import Parent from "../../components/parent";
 import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
-import CountdownTimer from "../../components/timer";
 import Calendar from "../../components/calendar";
 
 const weddingImages = [
