@@ -1,4 +1,4 @@
-name: Deploy React to GitHub Pages
+name: Deploy React App to GitHub Pages
 
 on:
   push:
@@ -6,22 +6,26 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: love-confession
-
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-      - name: Build project
-        run: npm run build
+      - name: Install dependencies
+        run: |
+          cd love-confession
+          npm install
+
+      - name: Build app
+        run: |
+          cd love-confession
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
