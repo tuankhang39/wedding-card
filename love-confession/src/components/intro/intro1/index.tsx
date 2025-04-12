@@ -9,7 +9,6 @@ interface FadeImagesNoPositionProps {
 const FadeImagesNoPosition = (props: FadeImagesNoPositionProps) => {
   const { images } = props;
   const [index, setIndex] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
@@ -26,12 +25,6 @@ const FadeImagesNoPosition = (props: FadeImagesNoPositionProps) => {
   }, [images.length]);
   return (
     <div>
-      <audio
-        ref={audioRef}
-        src={`${config.BASE_PATH}/audio/causeiloveyou.mp3`}
-        preload="auto"
-        autoPlay
-      />
       <p
         className="mt-[30px] font-bold text-[30px] font-ephesis"
         data-aos="fade-down"

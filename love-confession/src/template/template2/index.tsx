@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FadeImagesNoPosition from "../../components/intro/intro1";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -36,6 +36,7 @@ const Template2 = () => {
   const [show, setShow] = useState(true);
   const [shouldRender, setShouldRender] = useState(false); // Điều khiển DOM
   const [shouldRender1, setShouldRender1] = useState(false); // Điều khiển DOM
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     AOS.init({
@@ -51,6 +52,7 @@ const Template2 = () => {
     }
   }, [show]);
   const toggleContent = () => {
+    handlePlay();
     setShow((prev) => !prev);
     setTimeout(() => {
       setShouldRender1(true);
@@ -69,8 +71,18 @@ const Template2 = () => {
     left: show ? "1/2" : 0,
   };
 
+  const handlePlay = () => {
+    audioRef.current?.play().catch((err) => {
+      console.error("Play failed:", err);
+    });
+  };
   return (
     <div className=" text-black font-roboto overflow-x-hidden relative bg-white">
+      <audio
+        ref={audioRef}
+        src={`${config.BASE_PATH}/audio/causeiloveyou.mp3`}
+        preload="auto"
+      />
       {!shouldRender && (
         <div className="w-full h-[100vh]">
           <img
