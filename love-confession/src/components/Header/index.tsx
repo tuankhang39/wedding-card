@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import config from "../../config/envConfig";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
       }}
     >
       <nav className="flex gap-4 items-center text-white bg-[#990000] font-ephesis">
-        <img src="/logo.png" className="w-[80px]" />
+        <img src={`${config.BASE_PATH}logo.png`} className="w-[80px]" />
         <Link to="/">Trang chủ</Link>
         <Link to="/template">Mẫu</Link>
       </nav>

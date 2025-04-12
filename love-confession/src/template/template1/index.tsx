@@ -21,7 +21,7 @@ const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi3.webp`,
   `${config.BASE_PATH}template1/anhcuoi4.webp`,
   `${config.BASE_PATH}template1/anhcuoi5.jpg`,
-  `${config.BASE_PATH}template1/anhcuoi6.webp`,
+  `${config.BASE_PATH}template1/anhcuoi6.jpg`,
 ];
 
 const data = {
