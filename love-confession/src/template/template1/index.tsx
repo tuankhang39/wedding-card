@@ -48,7 +48,7 @@ const theme = {
   },
 };
 
-export default function LoveConfessionPage() {
+export default function Template1() {
   const [templateTheme, setTemplateTheme] = useState(theme.gray);
   useEffect(() => {
     AOS.init({
