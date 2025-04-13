@@ -12,7 +12,7 @@ const songs = [
     url: "ngaydautien.mp3",
   },
   {
-    title: "🎵 Nothing gonna change my love for you",
+    title: "🎵 Nothing gonna ...",
     url: "nothinggona.mp3",
   },
   {
@@ -63,7 +63,7 @@ const MusicPlayer: React.FC = () => {
       <div className="relative">
         <button
           className={clsx(
-            "bg-pink-500 text-white rounded-full p-3 shadow-lg transition-transform hover:bg-pink-600",
+            "w-14 h-14 bg-pink-500 text-white rounded-full p-3 shadow-lg transition-transform hover:bg-pink-600",
             isPlaying && "animate-spin-slow"
           )}
           onClick={toggleMusicButton}
