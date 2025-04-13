@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import Typewriter from "../../components/typeWriter";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import config from "../../config/envConfig";
-import Line1 from "../../components/lines";
 
 const Template3 = () => {
   useEffect(() => {
