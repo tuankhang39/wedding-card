@@ -77,7 +77,7 @@ const Template2 = () => {
     });
   };
   return (
-    <div className=" text-black font-roboto overflow-x-hidden relative bg-white">
+    <div className="text-black font-roboto overflow-x-hidden relative bg-white">
       <audio
         ref={audioRef}
         src={`${config.BASE_PATH}/audio/causeiloveyou.mp3`}

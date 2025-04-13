@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 interface TypewriterProps {
   text: string;
+  className?: string;
   speed?: number;
 }
 
-const Typewriter = ({ text, speed = 100 }: TypewriterProps) => {
+const Typewriter = ({ text, className = "", speed = 100 }: TypewriterProps) => {
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Typewriter = ({ text, speed = 100 }: TypewriterProps) => {
   }, [text, speed]);
 
   return (
-    <p className="mx-10 font-ephesis" data-aos="zoom-in">
+    <p className={clsx("mx-10 font-ephesis", className)} data-aos="zoom-in">
       {displayedText}
     </p>
   );
