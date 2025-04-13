@@ -6,6 +6,8 @@ import Template1 from "../template/template1";
 import Template2 from "../template/template2";
 import Template3 from "../template/template3";
 import Template4 from "../template/template4";
+import Template5 from "../template/template5";
+import Template6 from "../template/template6";
 
 const Routers = () => {
   return (
@@ -18,6 +20,8 @@ const Routers = () => {
       <Route path="/template2" element={<Template2 />} />
       <Route path="/template3" element={<Template3 />} />
       <Route path="/template4" element={<Template4 />} />
+      <Route path="/template5" element={<Template5 />} />
+      <Route path="/template6" element={<Template6 />} />
     </Routes>
   );
 };

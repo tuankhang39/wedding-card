@@ -1,7 +1,37 @@
 import { useEffect } from "react";
-import Typewriter from "../../components/typeWriter";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Intro2 from "../../components/intro/intro2";
+import MusicPlayer from "../../components/audio";
+import Parent from "../../components/parent";
+import config from "../../config/envConfig";
+import Couple1 from "../../components/couple/couple1";
+import Letter from "../../components/letter";
+import Calendar from "../../components/calendar";
+import CountdownTimer from "../../components/timer";
+import Location from "../../components/location";
+import Album1 from "../../components/Album/album1";
+
+const weddingImages = [
+  `${config.BASE_PATH}template1/anhcuoi1.webp`,
+  `${config.BASE_PATH}template1/anhcuoi2.webp`,
+  `${config.BASE_PATH}template1/anhcuoi3.webp`,
+  `${config.BASE_PATH}template1/anhcuoi4.webp`,
+  `${config.BASE_PATH}template1/anhcuoi5.jpg`,
+  `${config.BASE_PATH}template1/anhcuoi6.jpg`,
+];
+
+const data = {
+  girlParent: {
+    father: "Nguyễn Văn Thành",
+    mother: "Nguyễn Thị Hồng Nhung",
+  },
+  boyParent: {
+    father: "Trần Minh Quân",
+    mother: "Trần Lệ Thu",
+  },
+};
+const target = "2025-04-30T10:00:00";
 
 const Template3 = () => {
   useEffect(() => {
@@ -12,40 +42,33 @@ const Template3 = () => {
   }, []);
   return (
     <div className="text-black font-roboto overflow-x-hidden relative bg-white">
-      <div className="h-[100vh]">
-        <div className="grid grid-cols-2 gap-2 m-5">
-          <div>
-            <img
-              className="w-full"
-              src="https://tuart.net/wp-content/uploads/2024/08/454582265_8137642162961009_8518844859338484168_n.jpg"
-            />
-          </div>
-          <div className="flex items-center">
-            <Typewriter
-              className="!mx-1"
-              text="Hôn nhân không tìm người hoàn hảo, mà là cùng nhau hoàn thiện, yêu thương và bước tiếp qua mọi thăng trầm"
-              speed={30}
-            />
-          </div>
-        </div>
+      <MusicPlayer />
+      <Intro2 />
+      <div>
+        <p
+          className="my-[20px] font-bold text-[30px] font-ephesis"
+          data-aos="fade-down"
+        >
+          Thiệp mời cưới
+        </p>
+        <Parent {...data} />
+        <img
+          src={`${config.BASE_PATH}template1/line.png`}
+          className="w-full rounded-t-[40%] my-3"
+        />
+        <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />
         <div>
-          <p className="font-bold text-[40px] font-ephesis">Saved the day</p>
-        </div>
-        <div className="grid grid-cols-2 gap-2 m-5">
-          <div className="flex items-center">
-            <Typewriter
-              className="!mx-1"
-              text="Hôn nhân không phải là điểm đến, mà là hành trình tìm một người bạn đồng hành, học cách yêu và được yêu một cách trưởng thành."
-              speed={30}
-            />
-          </div>
-          <div>
-            <img
-              className="w-full"
-              src="https://tuart.net/wp-content/uploads/2024/08/454582265_8137642162961009_8518844859338484168_n.jpg"
-            />
+          <Letter />
+          <div className="p-5 pt-0">
+            <CountdownTimer targetDate={target} />
+            <Calendar />
           </div>
         </div>
+        <Location
+          address="123/12 Nguyen Van Linh Q1, Hồ Chí MInh"
+          home="Tư gia chúng tôi"
+        />
+        <Album1 weddingImages={weddingImages} />
       </div>
     </div>
   );

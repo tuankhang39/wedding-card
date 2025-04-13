@@ -43,7 +43,7 @@ const Snowfall = (props: SnowfallProps) => {
       {flakes.map((flake) => (
         <div
           key={flake.id}
-          className="snowflake"
+          className="snowflake-wrapper"
           style={{
             left: flake.left,
             animationDelay: `${flake.delay}s`,

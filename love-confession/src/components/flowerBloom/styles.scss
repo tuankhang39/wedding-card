@@ -1,0 +1,178 @@
+.letter-wrapper {
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+  }
+  .envelope {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.5s;
+  }
+
+  .envelope-front {
+    width: 400px;
+    height: 250px;
+    background: #f4e4bc;
+    border: 2px solid #d4a373;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    perspective: 1000px;
+  }
+  .envelope-flap {
+    width: 100%;
+    height: 50%;
+    background: #f4e4bc;
+    position: absolute;
+    top: 0;
+    transform-origin: top;
+    transition: transform 0.5s;
+    border-bottom: 2px solid #d4a373;
+    clip-path: polygon(0 0, 50% 30%, 100% 0);
+    z-index: 2;
+  }
+  .envelope-front.open .envelope-flap {
+    transform: rotateX(-180deg);
+  }
+  .envelope-front.open.zIndex .envelope-flap {
+    z-index: 1;
+  }
+  .envelope-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Great+Vibes", cursive;
+    font-size: 2rem;
+    color: #5c4033;
+    z-index: 1;
+  }
+  .cover-letter {
+    position: absolute;
+    width: 100%;
+    background: red;
+    height: 100%;
+    z-index: 2;
+  }
+  .letter {
+    position: absolute;
+    width: 90%;
+    height: 80%;
+    background: #fff;
+    top: 20%;
+    left: 5%;
+    transition: transform 0.5s, width 0.5s 0.5s, height 0.5s 0.5s, top 0.5s 0.5s,
+      left 0.5s 0.5s;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  .letter.pulled {
+    transform: translateY(-110%);
+  }
+  .letter.expanded {
+    scale: 5;
+    top: 400%;
+    z-index: 10;
+    transition: width 0.5s, height 0.5s, scale 2s, top 2s, zoom 3s;
+  }
+  .invitation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #333;
+    padding: 20px;
+    max-width: 600px;
+    opacity: 0;
+    transition: opacity 0.5s 1s;
+  }
+  .invitation.visible {
+    opacity: 1;
+  }
+  .title {
+    font-family: "Great+Vibes", cursive;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #5c4033;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #5c4033;
+  }
+  .details {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 20px 0;
+    color: #333;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #f4a261;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background 0.3s;
+  }
+  .button:hover {
+    background: #e76f51;
+  }
+  .leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url("https://img.icons8.com/color/48/000000/leaf.png") no-repeat
+      center;
+    background-size: contain;
+    animation: fall linear infinite;
+  }
+  // @keyframes fall {
+  //   0% {
+  //     transform: translateY(-100vh) rotate(0deg);
+  //     opacity: 1;
+  //   }
+  //   100% {
+  //     transform: translateY(100vh) rotate(360deg);
+  //     opacity: 0;
+  //   }
+  // }
+  @media (max-width: 768px) {
+    .envelope-front {
+      margin: 100px;
+      width: 100%;
+      height: 40vh;
+    }
+    .envelope-text {
+      font-size: 1.5rem;
+    }
+    .title {
+      font-size: 2.5rem;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    .details {
+      font-size: 1rem;
+    }
+    .button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+}

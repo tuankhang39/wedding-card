@@ -3,7 +3,7 @@ import config from "../../config/envConfig";
 
 const template = [
   {
-    src: "mau1.jpg",
+    src: "mau3.jfif",
     cardName: "Mẫu 1",
     link: "/template1",
   },
@@ -13,9 +13,24 @@ const template = [
     link: "/template2",
   },
   {
-    src: "mau1.jpg",
+    src: "mau2.jfif",
     cardName: "Mẫu 3",
-    link: "/template1",
+    link: "/template3",
+  },
+  {
+    src: "mau1.jpg",
+    cardName: "Mẫu 4",
+    link: "/template4",
+  },
+  {
+    src: "mau1.jpg",
+    cardName: "Mẫu 5",
+    link: "/template5",
+  },
+  {
+    src: "mau1.jpg",
+    cardName: "Mẫu 6",
+    link: "/template6",
   },
 ];
 
@@ -48,6 +63,10 @@ const Home = () => {
           Một không gian nơi bạn có thể gửi thiệp tỏ tình, thiệp mời cưới
           online, với thiết kế tinh tế, âm nhạc ấm áp, và cảm xúc trọn vẹn.
         </p>
+        <img
+          className="my-5 w-full"
+          src="https://tuart.net/wp-content/uploads/2024/08/454496822_8137646862960539_1741187069971390791_n.jpg"
+        />
       </div>
     </div>
   );

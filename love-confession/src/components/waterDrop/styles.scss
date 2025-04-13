@@ -1,0 +1,46 @@
+@keyframes drop {
+    0% {
+      top: 0;
+      opacity: 1;
+    }
+    90% {
+      top: 90%;
+      opacity: 1;
+    }
+    100% {
+      top: 90%;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes splash {
+    0% {
+      width: 0;
+      height: 0;
+      opacity: 0.6;
+    }
+    100% {
+      width: 80px;
+      height: 80px;
+      opacity: 0;
+    }
+  }
+  
+  .animate-drop {
+    animation: drop 1.8s ease-in forwards;
+  }
+  
+  .animate-splash .splash-circle {
+    position: absolute;
+    border: 2px solid #3b82f6;
+    border-radius: 9999px;
+    animation: splash 1s ease-out infinite;
+  }
+  
+  .animate-splash .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animate-splash .delay-400 {
+    animation-delay: 0.4s;
+  }
+  

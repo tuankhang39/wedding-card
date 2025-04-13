@@ -49,7 +49,7 @@ const theme = {
 };
 
 export default function Template1() {
-  const [templateTheme, setTemplateTheme] = useState(theme.gray);
+  const [templateTheme, setTemplateTheme] = useState(theme.red);
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -65,6 +65,7 @@ export default function Template1() {
       className=" text-white font-roboto overflow-x-hidden"
       style={{ background: templateTheme.background }}
     >
+      {/* <MusicPlayer /> */}
       <Snowfall icon={templateTheme.fall} />
       <IconTop img={templateTheme.iconTop} />
       <div className="mt-[-60px]">

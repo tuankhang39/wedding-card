@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
 interface TypewriterProps {
@@ -10,12 +10,19 @@ interface TypewriterProps {
 const Typewriter = ({ text, className = "", speed = 100 }: TypewriterProps) => {
   const [displayedText, setDisplayedText] = useState("");
 
+  const displayedTextRef = useRef("");
+
   useEffect(() => {
     let index = 0;
+    displayedTextRef.current = ""; // reset ref mỗi khi text thay đổi
+    setDisplayedText(""); // reset state
+
     const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + (text[index] || ""));
-      index++;
-      if (index === text.length) {
+      if (index < text.length) {
+        displayedTextRef.current += text[index];
+        setDisplayedText(displayedTextRef.current);
+        index++;
+      } else {
         clearInterval(interval);
       }
     }, speed);

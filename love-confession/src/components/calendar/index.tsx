@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 const weekdays = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 
 const getDaysInMonth = (month: number, year: number) => {
@@ -20,12 +22,24 @@ const getDaysInMonth = (month: number, year: number) => {
   return days;
 };
 
-const Calendar = ({ month = 3, year = 2025 }) => {
+interface CalendarProps {
+  month?: number;
+  year?: number;
+  headerClassName?: string;
+}
+
+const Calendar = (props: CalendarProps) => {
+  const { month = 4, year = 2025, headerClassName } = props;
   const days = getDaysInMonth(month, year);
 
   return (
     <div className="mx-auto p-4 bg-white rounded-2xl shadow-xl">
-      <h2 className="text-center text-2xl font-bold text-gray-800 mb-4">
+      <h2
+        className={clsx(
+          "text-center text-2xl font-bold text-gray-800 mb-4",
+          headerClassName
+        )}
+      >
         Tháng {month + 1} - {year}
       </h2>
 

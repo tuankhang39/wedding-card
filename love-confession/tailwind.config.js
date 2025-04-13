@@ -26,6 +26,7 @@ export default {
       },
       animation: {
         'slide-in-left': 'slide-in-left 0.5s ease-out forwards',
+        'spin-slow': 'spin 3s linear infinite',
       },
     },
   },
