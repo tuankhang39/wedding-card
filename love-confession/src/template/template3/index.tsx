@@ -12,18 +12,9 @@ import CountdownTimer from "../../components/timer";
 import Location from "../../components/location";
 import Album1 from "../../components/Album/album1";
 import { WeddingDetail } from "../../api/weddingApi";
-import CongratsForm from "../../components/CongratsForm";
 import Album2 from "../../components/Album/album2";
-
-const weddingImages = [
-  `${config.BASE_PATH}template1/anhcuoi1.webp`,
-  `${config.BASE_PATH}template1/anhcuoi1.webp`,
-  `${config.BASE_PATH}template1/anhcuoi2.webp`,
-  `${config.BASE_PATH}template1/anhcuoi3.webp`,
-  `${config.BASE_PATH}template1/anhcuoi4.webp`,
-  `${config.BASE_PATH}template1/anhcuoi5.jpg`,
-  `${config.BASE_PATH}template1/anhcuoi6.jpg`,
-];
+import ThanksLetter from "../../components/thanks";
+import { Helmet } from "react-helmet";
 
 const Template3 = (props: WeddingDetail) => {
   const {
@@ -35,6 +26,7 @@ const Template3 = (props: WeddingDetail) => {
     location,
     venue,
     organizationDay,
+    images = [],
   } = props;
   useEffect(() => {
     AOS.init({
@@ -43,35 +35,49 @@ const Template3 = (props: WeddingDetail) => {
     });
   }, []);
   return (
-    <div className="text-black font-roboto overflow-x-hidden relative bg-white">
-      <MusicPlayer />
-      <Intro2 />
-      <div>
-        <p
-          className="my-[20px] font-bold text-[30px] font-ephesis"
-          data-aos="fade-down"
-        >
-          Thiệp mời cưới
-        </p>
-        <Parent groomParent={groomParents} brideParent={brideParents} />
-        <img
-          src={`${config.BASE_PATH}template1/line.png`}
-          className="w-full rounded-t-[40%] my-3"
-        />
-        <Album2 weddingImages={weddingImages} />
-        <Couple1 brideName={brideName} groomName={groomName} />
+    <>
+      <Helmet>
+        <title>
+          {brideName}💍{groomName}
+        </title>
+      </Helmet>
+      <div className="text-black font-roboto overflow-x-hidden relative bg-white">
+        <MusicPlayer />
+        <Intro2 img1={images[0]} img2={images[1]} />
         <div>
-          <Letter targetDate={organizationDay!} />
-          <div className="p-5 pt-0">
-            <CountdownTimer targetDate={organizationDay!} />
-            <Calendar targetDate={organizationDay!} />
+          <p
+            className="my-[20px] font-bold text-[30px] font-ephesis"
+            data-aos="fade-down"
+          >
+            Thiệp mời cưới
+          </p>
+          <Parent groomParent={groomParents} brideParent={brideParents} />
+          <img
+            src={`${config.BASE_PATH}template1/line.png`}
+            className="w-full rounded-t-[40%] my-3"
+          />
+          <Album2 weddingImages={images.slice(2, 5)} />
+          <Couple1 brideName={brideName} groomName={groomName} />
+          <div>
+            <Letter targetDate={organizationDay!} />
+            <div className="p-5 pt-0">
+              <CountdownTimer targetDate={organizationDay!} />
+              <Calendar
+                targetDate={organizationDay!}
+                calendarClassName="border border-gray"
+                dayClassName="bg-[#ff0080]"
+              />
+            </div>
           </div>
+          <Location src={mapLink} address={location} home={venue} />
+          <Album1 weddingImages={images} />
+          <ThanksLetter
+            name={brideName + " & " + groomName}
+            className="border border-gray"
+          />
         </div>
-        <Location src={mapLink} address={location} home={venue} />
-        <CongratsForm />
-        <Album1 weddingImages={weddingImages} />
       </div>
-    </div>
+    </>
   );
 };
 

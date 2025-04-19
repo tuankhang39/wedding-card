@@ -46,7 +46,7 @@ const data: WeddingDetail = {
   organizationDay: tomorrow,
   venue: "Tư gia chúng tôi",
   invitationText: "Invitation Text",
-  location: "Location",
+  location: "418/8 Nguyễn Thái Sơn, Quận Gò vấp, Thành phố Hồ Chí Minh",
   mapLink:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.856673772879!2d105.78448421476315!3d21.02851109314102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abc123456789%3A0x123456789abcdef!2zSOG6o2kgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1sen!2s!4v1611234567890!5m2!1sen!2s",
   theme: "red",

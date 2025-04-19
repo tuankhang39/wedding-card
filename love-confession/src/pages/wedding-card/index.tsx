@@ -10,11 +10,44 @@ import Template7 from "../../template/template7";
 import Template8 from "../../template/template8";
 import Template9 from "../../template/template9";
 import Template10 from "../../template/template10";
+import Loading from "../../components/loading";
+import { useEffect, useState } from "react";
+
+function preloadImages(urls: string[]): Promise<void> {
+  return new Promise((resolve) => {
+    let loaded = 0;
+    urls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        loaded++;
+        if (loaded === urls.length) {
+          resolve();
+        }
+      };
+      img.onerror = () => {
+        loaded++; // vẫn tiếp tục nếu có lỗi
+        if (loaded === urls.length) {
+          resolve();
+        }
+      };
+    });
+  });
+}
 
 const WeddingCard = () => {
   const { path } = useParams();
   const { data: weddingCard, isLoading, isError } = useGetByIdQuery(path!);
-  if (isLoading) return <div>Loading</div>;
+
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    preloadImages(weddingCard?.images ?? []).then(() => {
+      setAllImagesLoaded(true);
+    });
+  }, []);
+
+  if (allImagesLoaded || isLoading) return <Loading />;
   if (isError) return <div>Error</div>;
   switch (weddingCard?.template) {
     case "template1":

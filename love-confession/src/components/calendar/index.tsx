@@ -27,12 +27,14 @@ const getDaysInMonth = (month: number, year: number) => {
 
 interface CalendarProps {
   targetDate: string | Date;
+  calendarClassName?: string;
   headerClassName?: string;
   dayClassName?: string;
 }
 
 const Calendar = (props: CalendarProps) => {
-  const { targetDate, headerClassName, dayClassName } = props;
+  const { targetDate, calendarClassName, headerClassName, dayClassName } =
+    props;
   const date = new Date(targetDate);
   const day = date.getDate();
   const month = date.getMonth();
@@ -40,7 +42,12 @@ const Calendar = (props: CalendarProps) => {
   const days = getDaysInMonth(month, year);
 
   return (
-    <div className="heart-wrapper mx-auto p-4 bg-white rounded-2xl shadow-xl">
+    <div
+      className={clsx(
+        "heart-wrapper mx-auto p-4 bg-white rounded-2xl shadow-xl",
+        calendarClassName
+      )}
+    >
       <h2
         className={clsx(
           "text-center text-2xl font-bold text-gray-800 mb-4 !font-ephesis",

@@ -1,14 +1,11 @@
 import Typewriter from "../../typeWriter";
 
-const Intro2 = () => {
+const Intro2 = ({ img1, img2 }: { img1: string; img2: string }) => {
   return (
     <div>
       <div className="grid grid-cols-2 gap-2 m-5">
         <div>
-          <img
-            className="w-full"
-            src="https://tuart.net/wp-content/uploads/2024/08/454582265_8137642162961009_8518844859338484168_n.jpg"
-          />
+          <img className="w-full" src={img1} />
         </div>
         <div className="flex items-center">
           <Typewriter
@@ -30,10 +27,7 @@ const Intro2 = () => {
           />
         </div>
         <div>
-          <img
-            className="w-full"
-            src="https://tuart.net/wp-content/uploads/2024/08/454756973_8137644389627453_430199620212241148_n.jpg"
-          />
+          <img className="w-full" src={img2} />
         </div>
       </div>
     </div>

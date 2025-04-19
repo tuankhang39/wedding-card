@@ -37,7 +37,7 @@ const Letter = (props: LetterProp) => {
         className="text-[20px] border-t-[1px] border-b-[1px] w-fit m-auto font-lustria"
         data-aos="zoom-in"
       >
-        Thứ {week} lúc {hour}: {minute} phút
+        {week ? `Thứ ${week}` : "Chủ nhật"} lúc {hour}: {minute} phút
       </p>
     </div>
   );

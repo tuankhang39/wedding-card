@@ -21,7 +21,7 @@ const Parent = (props: ParentProps) => {
       <div className="uppercase text-[13px] font-bold" data-aos="fade-left">
         <h4>Nhà trai</h4>
         <p className="capitalize">Ông {brideParent.fatherName}</p>
-        <p className="capitalize">Bà {brideParent.fatherName}</p>
+        <p className="capitalize">Bà {brideParent.motherName}</p>
       </div>
     </div>
   );
