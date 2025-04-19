@@ -5,10 +5,12 @@ import * as admin from 'firebase-admin';
 @Injectable()
 export class FirebaseService implements OnModuleInit {
   onModuleInit() {
+    const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    if (!privateKey) throw new Error('FIREBASE_PRIVATE_KEY missing');
     admin.initializeApp({
       credential: admin.credential.cert({
         clientEmail: process.env.CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY,
+        privateKey: privateKey,
         projectId: process.env.FIREBASE_PROJECT_ID,
       }),
       storageBucket: process.env.STORAGE_BUCKET,
