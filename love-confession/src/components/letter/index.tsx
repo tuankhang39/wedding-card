@@ -1,6 +1,24 @@
 import DateType from "./DateType";
+import CalendarCalculator from "viet-lunar-calendar";
+import DateType2 from "./DateType2";
 
-const Letter = () => {
+interface LetterProp {
+  targetDate: string | Date;
+}
+const Letter = (props: LetterProp) => {
+  const { targetDate } = props;
+  const date = new Date(targetDate);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const week = date.getDay();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+
+  const lunnarCalendar = new CalendarCalculator().getLunarDate(date);
+  const lunarDate = lunnarCalendar.day;
+  const lunarMonth = lunnarCalendar.month;
+  const lunarYear = lunnarCalendar.yearStemBranch?.say;
   return (
     <div>
       <p
@@ -12,13 +30,15 @@ const Letter = () => {
       <p className="uppercase text-[10px] mb-5" data-aos="zoom-in">
         Chúng tôi mời bạn tham dự lễ cưới của chúng tôi vào ngày
       </p>
-      <DateType />
-      <p className="my-5 font-lustria">Nhằm ngày 20 tháng 4 năm Ất Tỵ</p>
+      <DateType day={day} month={month} year={year} />
+      <p className="my-5 font-lustria">
+        Nhằm ngày {lunarDate} tháng {lunarMonth} năm {lunarYear}
+      </p>
       <p
         className="text-[20px] border-t-[1px] border-b-[1px] w-fit m-auto font-lustria"
         data-aos="zoom-in"
       >
-        Thứ 7 lúc 6:00PM
+        Thứ {week} lúc {hour}: {minute} phút
       </p>
     </div>
   );

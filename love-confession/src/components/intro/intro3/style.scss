@@ -1,0 +1,33 @@
+.wavy-img-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wavy-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  left: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.wave-top {
+  top: 0;
+  transform: translateY(-100%);
+}
+
+.wave-bottom {
+  bottom: 0;
+  transform: translateY(100%);
+}

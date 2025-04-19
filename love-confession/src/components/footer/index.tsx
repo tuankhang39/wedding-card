@@ -4,7 +4,7 @@ import { SiTiktok, SiZalo } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <Box sx={{ backgroundColor: "#f5f5f5", py: 3 }}>
+    <Box sx={{ backgroundColor: "#f5f5f5", py: 2, mt: 5 }}>
       <Container maxWidth="lg">
         <Stack
           direction={{ xs: "column", md: "row" }}

@@ -2,14 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import FadeImagesNoPosition from "../../components/intro/intro1";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Parent from "../../components/parent";
+import Parent from "../../components/parent/Parent1";
 import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
 import Calendar from "../../components/calendar";
 import config from "../../config/envConfig";
 import CountdownTimer from "../../components/timer";
 import Location from "../../components/location";
-import Album1 from "../../components/Album/album1";
+import { WeddingDetail } from "../../api/weddingApi";
+import CongratsForm from "../../components/CongratsForm";
+import ThanksLetter from "../../components/thanks";
+import Parent2 from "../../components/parent/Parent2";
+import Image1 from "../../components/img/img1";
 
 const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi1.webp`,
@@ -20,24 +24,22 @@ const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi6.jpg`,
 ];
 
-const data = {
-  girlParent: {
-    father: "Nguyễn Văn Thành",
-    mother: "Nguyễn Thị Hồng Nhung",
-  },
-  boyParent: {
-    father: "Trần Minh Quân",
-    mother: "Trần Lệ Thu",
-  },
-};
-const target = "2025-04-30T10:00:00";
-
-const Template2 = () => {
+const Template2 = (props: WeddingDetail) => {
   const [show, setShow] = useState(true);
   const [shouldRender, setShouldRender] = useState(false); // Điều khiển DOM
   const [shouldRender1, setShouldRender1] = useState(false); // Điều khiển DOM
   const audioRef = useRef<HTMLAudioElement>(null);
-
+  const {
+    brideName,
+    groomName,
+    brideParents,
+    groomParents,
+    mapLink,
+    location,
+    theme: t,
+    venue,
+    organizationDay,
+  } = props;
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -56,7 +58,7 @@ const Template2 = () => {
     setShow((prev) => !prev);
     setTimeout(() => {
       setShouldRender1(true);
-    }, 24500);
+    }, 3000);
   };
 
   const contentWrapperStyle = (translateX: string) => {
@@ -115,24 +117,24 @@ const Template2 = () => {
           >
             Thiệp mời cưới
           </p>
-          <Parent {...data} />
-          <img
-            src={`${config.BASE_PATH}template1/line.png`}
-            className="w-full rounded-t-[40%] my-3"
-          />
-          <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />
+          <Parent2 groomParent={groomParents} brideParent={brideParents} />
+          <Image1 />
+          <Couple1 brideName={brideName} groomName={groomName} />
           <div>
-            <Letter />
+            <Letter targetDate={organizationDay!} />
             <div className="p-5 pt-0">
-              <CountdownTimer targetDate={target} />
-              <Calendar />
+              <CountdownTimer targetDate={organizationDay!} />
+              <Calendar
+                targetDate={organizationDay!}
+                dayClassName="bg-[#ff0080]"
+              />
             </div>
           </div>
-          <Location
-            address="123/12 Nguyen Van Linh Q1, Hồ Chí MInh"
-            home="Tư gia chúng tôi"
+          <Location home={venue} address={location} src={mapLink} />
+          <ThanksLetter
+            name={brideName + " và " + groomName}
+            className="bg-[rgba(0,0,0,0.5)] text-white"
           />
-          <Album1 weddingImages={weddingImages} />
         </div>
       )}
     </div>

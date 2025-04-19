@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Intro2 from "../../components/intro/intro2";
 import MusicPlayer from "../../components/audio";
-import Parent from "../../components/parent";
+import Parent from "../../components/parent/Parent1";
 import config from "../../config/envConfig";
 import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
@@ -11,8 +11,12 @@ import Calendar from "../../components/calendar";
 import CountdownTimer from "../../components/timer";
 import Location from "../../components/location";
 import Album1 from "../../components/Album/album1";
+import { WeddingDetail } from "../../api/weddingApi";
+import CongratsForm from "../../components/CongratsForm";
+import Album2 from "../../components/Album/album2";
 
 const weddingImages = [
+  `${config.BASE_PATH}template1/anhcuoi1.webp`,
   `${config.BASE_PATH}template1/anhcuoi1.webp`,
   `${config.BASE_PATH}template1/anhcuoi2.webp`,
   `${config.BASE_PATH}template1/anhcuoi3.webp`,
@@ -21,19 +25,18 @@ const weddingImages = [
   `${config.BASE_PATH}template1/anhcuoi6.jpg`,
 ];
 
-const data = {
-  girlParent: {
-    father: "Nguyễn Văn Thành",
-    mother: "Nguyễn Thị Hồng Nhung",
-  },
-  boyParent: {
-    father: "Trần Minh Quân",
-    mother: "Trần Lệ Thu",
-  },
-};
-const target = "2025-04-30T10:00:00";
-
-const Template3 = () => {
+const Template3 = (props: WeddingDetail) => {
+  const {
+    brideName,
+    groomName,
+    brideParents,
+    groomParents,
+    mapLink,
+    location,
+    theme: t,
+    venue,
+    organizationDay,
+  } = props;
   useEffect(() => {
     AOS.init({
       duration: 1500,
@@ -51,23 +54,22 @@ const Template3 = () => {
         >
           Thiệp mời cưới
         </p>
-        <Parent {...data} />
+        <Parent groomParent={groomParents} brideParent={brideParents} />
         <img
           src={`${config.BASE_PATH}template1/line.png`}
           className="w-full rounded-t-[40%] my-3"
         />
-        <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />
+        <Album2 weddingImages={weddingImages} />
+        <Couple1 brideName={brideName} groomName={groomName} />
         <div>
-          <Letter />
+          <Letter targetDate={organizationDay!} />
           <div className="p-5 pt-0">
-            <CountdownTimer targetDate={target} />
-            <Calendar />
+            <CountdownTimer targetDate={organizationDay!} />
+            <Calendar targetDate={organizationDay!} />
           </div>
         </div>
-        <Location
-          address="123/12 Nguyen Van Linh Q1, Hồ Chí MInh"
-          home="Tư gia chúng tôi"
-        />
+        <Location src={mapLink} address={location} home={venue} />
+        <CongratsForm />
         <Album1 weddingImages={weddingImages} />
       </div>
     </div>

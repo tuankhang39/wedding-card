@@ -1,4 +1,7 @@
 import clsx from "clsx";
+import config from "../../config/envConfig";
+
+import "./styles.scss";
 
 const weekdays = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 
@@ -23,43 +26,55 @@ const getDaysInMonth = (month: number, year: number) => {
 };
 
 interface CalendarProps {
-  month?: number;
-  year?: number;
+  targetDate: string | Date;
   headerClassName?: string;
+  dayClassName?: string;
 }
 
 const Calendar = (props: CalendarProps) => {
-  const { month = 4, year = 2025, headerClassName } = props;
+  const { targetDate, headerClassName, dayClassName } = props;
+  const date = new Date(targetDate);
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
   const days = getDaysInMonth(month, year);
 
   return (
-    <div className="mx-auto p-4 bg-white rounded-2xl shadow-xl">
+    <div className="heart-wrapper mx-auto p-4 bg-white rounded-2xl shadow-xl">
       <h2
         className={clsx(
-          "text-center text-2xl font-bold text-gray-800 mb-4",
+          "text-center text-2xl font-bold text-gray-800 mb-4 !font-ephesis",
           headerClassName
         )}
       >
         Tháng {month + 1} - {year}
       </h2>
 
-      <div className="grid grid-cols-7 gap-1 text-center font-semibold text-[#514b45] mb-2">
+      <div
+        className={clsx(
+          "grid grid-cols-7 gap-1 text-center font-semibold text-[#514b45] mb-2"
+        )}
+      >
         {weekdays.map((day) => (
-          <div key={day}>{day}</div>
+          <div className={clsx("px-1 rounded-lg", dayClassName)} key={day}>
+            {day}
+          </div>
         ))}
       </div>
 
       <div className="grid grid-cols-7 gap-1 text-center text-gray-700">
-        {days.map((day, index) => (
+        {days.map((d, index) => (
           <div
             key={index}
-            className={`h-10 flex items-center justify-center rounded-lg ${
-              day
-                ? "hover:bg-blue-100 cursor-pointer"
-                : "opacity-0 pointer-events-none"
-            }`}
+            className={`relative h-12 w-12 flex items-center justify-center rounded-lg`}
           >
-            {day}
+            {d}
+            {day === d && (
+              <img
+                className="absolute w-10 heart"
+                src={`${config.BASE_PATH}template/heard.png`}
+              />
+            )}
           </div>
         ))}
       </div>

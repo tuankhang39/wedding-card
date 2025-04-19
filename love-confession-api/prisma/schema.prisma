@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WeddingCard {
+  id             Int             @id @default(autoincrement())
+  path           String
+  template       String          @default("template1")
+  brideName      String
+  groomName      String
+  brideFather    String?
+  brideMother    String?
+  groomMother    String?
+  groomFather    String?
+  invitationText String?
+  location       String?
+  venue          String?
+  mapLink        String?
+  qrCodeImage    String?         // URL hoặc path file
+  theme          String?
+  organizationDay DateTime      @default(now())
+  createdAt      DateTime        @default(now())
+
+  bankAccounts   BankAccount[]
+  comments       Comment[]
+  images         Image[]
+}
+
+model Comment {
+  id          Int       @id @default(autoincrement())
+  message     String
+  createdAt   DateTime  @default(now())
+  weddingCard WeddingCard @relation(fields: [weddingCardId], references: [id])
+  weddingCardId Int
+}
+
+model Image {
+  id          Int       @id @default(autoincrement())
+  url         String
+  description String?
+  weddingCard WeddingCard @relation(fields: [weddingCardId], references: [id])
+  weddingCardId Int
+}
+
+model BankAccount {
+  id            Int       @id @default(autoincrement())
+  bankName      String
+  accountName   String
+  accountNumber String
+  qrCodeImage   String?
+  weddingCard   WeddingCard @relation(fields: [weddingCardId], references: [id])
+  weddingCardId Int
+}

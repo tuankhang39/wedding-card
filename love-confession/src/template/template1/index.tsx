@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import IconTop from "../../components/iconTop";
-import Parent from "../../components/parent";
+import Parent from "../../components/parent/Parent1";
 import Location from "../../components/location";
 import Album1 from "../../components/Album/album1";
 import Letter from "../../components/letter";
@@ -14,26 +14,11 @@ import "aos/dist/aos.css";
 
 import "./style.scss";
 import config from "../../config/envConfig";
-
-const weddingImages = [
-  `${config.BASE_PATH}template1/anhcuoi1.webp`,
-  `${config.BASE_PATH}template1/anhcuoi2.webp`,
-  `${config.BASE_PATH}template1/anhcuoi3.webp`,
-  `${config.BASE_PATH}template1/anhcuoi4.webp`,
-  `${config.BASE_PATH}template1/anhcuoi5.jpg`,
-  `${config.BASE_PATH}template1/anhcuoi6.jpg`,
-];
-
-const data = {
-  girlParent: {
-    father: "Nguyễn Văn Thành",
-    mother: "Nguyễn Thị Hồng Nhung",
-  },
-  boyParent: {
-    father: "Trần Minh Quân",
-    mother: "Trần Lệ Thu",
-  },
-};
+import { WeddingDetail } from "../../api/weddingApi";
+import Footer from "../../components/footer";
+import MusicPlayer from "../../components/audio";
+import ThanksLetter from "../../components/thanks";
+import CongratsForm from "../../components/CongratsForm";
 
 const theme = {
   gray: {
@@ -48,24 +33,33 @@ const theme = {
   },
 };
 
-export default function Template1() {
-  const [templateTheme, setTemplateTheme] = useState(theme.red);
+export default function Template1(props: WeddingDetail) {
+  const {
+    brideName,
+    groomName,
+    brideParents,
+    groomParents,
+    mapLink,
+    location,
+    theme: t,
+    venue,
+    organizationDay,
+    images,
+  } = props;
+  const [image1, ...image2] = images || [];
+  const templateTheme = theme[t as "gray" | "red"];
   useEffect(() => {
     AOS.init({
       duration: 1500,
       once: true,
     });
   }, []);
-  const changeTheme = (t: "gray" | "red") => {
-    setTemplateTheme(theme[t]);
-  };
-  const target = "2025-04-30T10:00:00";
   return (
     <div
       className=" text-white font-roboto overflow-x-hidden"
       style={{ background: templateTheme.background }}
     >
-      {/* <MusicPlayer /> */}
+      <MusicPlayer />
       <Snowfall icon={templateTheme.fall} />
       <IconTop img={templateTheme.iconTop} />
       <div className="mt-[-60px]">
@@ -79,34 +73,30 @@ export default function Template1() {
           "Bất kỳ cuộc hôn nhân nào đều là một cuộc hành trình kỳ diệu, nơi mà
           hai người yêu nhau cùng nhau phát triển.""
         </p>
-        <Parent {...data} />
+        <Parent groomParent={groomParents} brideParent={brideParents} />
         <img
           src={`${config.BASE_PATH}/template1/line.png`}
           className="w-full rounded-t-[40%] my-3"
         />
-        <Couple1 brideName="Diệu Nhi" groomName="Anh Tú" />
+        <Couple1 brideName={brideName} groomName={groomName} />
         <img
           data-aos="zoom-in"
-          src={`${config.BASE_PATH}template1/anhcuoi1.jpg`}
+          src={image1}
           className="w-full rounded-t-[40%] my-3"
         />
       </div>
       <div>
-        <Letter />
+        <Letter targetDate={organizationDay!} />
         <div className="p-5 pt-0">
-          <CountdownTimer targetDate={target} />
-          <Calendar />
+          <CountdownTimer targetDate={organizationDay!} />
+          <Calendar targetDate={organizationDay!} />
         </div>
       </div>
-      <Location
-        address="123/12 Nguyen Van Linh Q1, Hồ Chí MInh"
-        home="Tư gia chúng tôi"
-      />
-      <Album1 weddingImages={weddingImages} />
-      <div className="bottom-0 right-0 fixed">
-        <div onClick={() => changeTheme("red")}>red</div>
-        <div onClick={() => changeTheme("gray")}>gray</div>
-      </div>
+      <Location address={location} src={mapLink} home={venue} />
+      <CongratsForm />
+      <Album1 weddingImages={image2} />
+      <ThanksLetter name={brideName + " & " + groomName} />
+      <Footer />
     </div>
   );
 }

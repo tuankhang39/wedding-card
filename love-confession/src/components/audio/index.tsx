@@ -59,11 +59,11 @@ const MusicPlayer: React.FC = () => {
   };
 
   return (
-    <div className="flex m-auto fixed bottom-4 left-4 z-50 gap-2 items-center">
+    <div className="flex text-black m-auto fixed bottom-4 left-4 z-50 gap-2 items-center">
       <div className="relative">
         <button
           className={clsx(
-            "w-14 h-14 bg-pink-500 text-white rounded-full p-3 shadow-lg transition-transform hover:bg-pink-600",
+            "w-14 h-14 bg-white rounded-full p-3 shadow-lg transition-transform hover:bg-pink-600",
             isPlaying && "animate-spin-slow"
           )}
           onClick={toggleMusicButton}
