@@ -5,8 +5,6 @@ const CongratsForm: React.FC = () => {
   const [wish, setWish] = useState("");
   const [attending, setAttending] = useState<"yes" | "no" | "">("");
 
-  const bankAccount = "0123456789 - NGUYEN VAN A - Vietcombank";
-
   return (
     <div>
       <h2 className="text-2xl text-left font-ephesis mx-5">

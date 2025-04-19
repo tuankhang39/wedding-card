@@ -24,17 +24,17 @@ const WeddingCard = () => {
     case "template3":
       return <Template3 {...weddingCard} />;
     case "template4":
-      return <Template4 {...weddingCard} />;
+      return <Template4 />;
     case "template5":
-      return <Template5 {...weddingCard} />;
+      return <Template5 />;
     case "template6":
-      return <Template6 {...weddingCard} />;
+      return <Template6 />;
     case "template7":
-      return <Template7 {...weddingCard} />;
+      return <Template7 />;
     case "template8":
-      return <Template8 {...weddingCard} />;
+      return <Template8 />;
     case "template9":
-      return <Template9 {...weddingCard} />;
+      return <Template9 />;
     case "template10":
       return <Template10 {...weddingCard} />;
   }

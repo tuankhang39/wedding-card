@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import FadeImagesNoPosition from "../../components/intro/intro1";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Parent from "../../components/parent/Parent1";
 import Couple1 from "../../components/couple/couple1";
 import Letter from "../../components/letter";
 import Calendar from "../../components/calendar";
@@ -10,7 +9,6 @@ import config from "../../config/envConfig";
 import CountdownTimer from "../../components/timer";
 import Location from "../../components/location";
 import { WeddingDetail } from "../../api/weddingApi";
-import CongratsForm from "../../components/CongratsForm";
 import ThanksLetter from "../../components/thanks";
 import Parent2 from "../../components/parent/Parent2";
 import Image1 from "../../components/img/img1";
@@ -36,7 +34,6 @@ const Template2 = (props: WeddingDetail) => {
     groomParents,
     mapLink,
     location,
-    theme: t,
     venue,
     organizationDay,
   } = props;

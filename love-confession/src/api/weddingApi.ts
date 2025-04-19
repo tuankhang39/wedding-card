@@ -42,16 +42,6 @@ export interface WeddingDetail {
   images?: string[];
 }
 
-const data = {
-  girlParent: {
-    father: "Nguyễn Văn Thành",
-    mother: "Nguyễn Thị Hồng Nhung",
-  },
-  boyParent: {
-    father: "Trần Minh Quân",
-    mother: "Trần Lệ Thu",
-  },
-};
 export const weddingApi = createApi({
   reducerPath: "weddingApi",
   baseQuery: fetchBaseQuery({ baseUrl: config.API_URL }),

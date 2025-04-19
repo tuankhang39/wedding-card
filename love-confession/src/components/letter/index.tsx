@@ -1,6 +1,5 @@
 import DateType from "./DateType";
 import CalendarCalculator from "viet-lunar-calendar";
-import DateType2 from "./DateType2";
 
 interface LetterProp {
   targetDate: string | Date;

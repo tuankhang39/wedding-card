@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import IconTop from "../../components/iconTop";
 import Parent from "../../components/parent/Parent1";

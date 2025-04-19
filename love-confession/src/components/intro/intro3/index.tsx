@@ -1,6 +1,5 @@
 import config from "../../../config/envConfig";
 import Couple2 from "../../couple/couple2";
-import Typewriter from "../../typeWriter";
 
 import "./style.scss";
 const Intro3 = () => {

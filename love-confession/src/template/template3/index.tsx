@@ -33,7 +33,6 @@ const Template3 = (props: WeddingDetail) => {
     groomParents,
     mapLink,
     location,
-    theme: t,
     venue,
     organizationDay,
   } = props;

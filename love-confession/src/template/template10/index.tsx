@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Intro2 from "../../components/intro/intro2";
 import MusicPlayer from "../../components/audio";
 import Parent from "../../components/parent/Parent1";
 import config from "../../config/envConfig";
@@ -34,7 +33,6 @@ const Template10 = (props: WeddingDetail) => {
     groomParents,
     mapLink,
     location,
-    theme: t,
     venue,
     organizationDay,
   } = props;

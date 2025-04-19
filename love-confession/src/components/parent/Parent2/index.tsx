@@ -1,5 +1,3 @@
-import config from "../../../config/envConfig";
-
 interface ParentProps {
   groomParent: {
     fatherName?: string;
