@@ -61,5 +61,5 @@ export class WeddingDTO {
   theme?: string;
   bankAccounts?: Array<CreateBankAccountDto>;
   comments?: Array<CreateCommentDto>;
-  images?: Array<CreateImageDto>;
+  images?: Array<string>;
 }

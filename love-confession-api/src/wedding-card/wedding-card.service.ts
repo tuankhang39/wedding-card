@@ -50,6 +50,9 @@ export class WeddingCardService {
   async getWeddingCardById(path: string): Promise<WeddingDTO> {
     const weddingCard = await this.prisma.weddingCard.findFirst({
       where: { path },
+      include: {
+        images: true,
+      },
     });
 
     return {
@@ -73,7 +76,7 @@ export class WeddingCardService {
       theme: weddingCard?.theme || '',
       bankAccounts: [],
       comments: [],
-      images: [],
+      images: weddingCard?.images.map((image) => image.url) || [],
     };
   }
 }
