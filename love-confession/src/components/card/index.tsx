@@ -14,7 +14,7 @@ const Card = (props: CardProps) => {
   return (
     <div
       className="w-full mx-auto bg-white rounded-2xl shadow-md overflow-hidden border border-gray-200"
-      onClick={() => navigate(link)}
+      onClick={() => navigate("template" + link)}
     >
       <img
         className="w-full object-cover"

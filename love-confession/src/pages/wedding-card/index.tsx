@@ -47,7 +47,7 @@ const WeddingCard = () => {
     });
   }, []);
 
-  if (allImagesLoaded || isLoading) return <Loading />;
+  if (!allImagesLoaded || isLoading) return <Loading />;
   if (isError) return <div>Error</div>;
   switch (weddingCard?.template) {
     case "template1":
