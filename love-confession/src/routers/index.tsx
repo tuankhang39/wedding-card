@@ -62,7 +62,17 @@ const Routers = () => {
       </Route>
       <Route path="/template1" element={<Template1 {...data} />} />
       <Route path="/template2" element={<Template2 {...data} />} />
-      <Route path="/template3" element={<Template3 {...data} />} />
+      <Route
+        path="/template3"
+        element={
+          <Template3
+            {...{
+              ...data,
+              images: weddingImages.slice(1, weddingImages.length),
+            }}
+          />
+        }
+      />
       <Route path="/template4" element={<Template4 />} />
       <Route path="/template5" element={<Template5 />} />
       <Route path="/template6" element={<Template6 />} />
