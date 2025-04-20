@@ -80,7 +80,7 @@ const WeddingCard = () => {
     preloadImages(data.images ?? []).then(() => {
       setAllImagesLoaded(true);
     });
-  }, []);
+  }, [data.images]);
   if (!allImagesLoaded) return <Loading />;
   switch (path) {
     case "template1":

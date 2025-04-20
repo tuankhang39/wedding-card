@@ -45,7 +45,7 @@ const WeddingCard = () => {
     preloadImages(weddingCard?.images ?? []).then(() => {
       setAllImagesLoaded(true);
     });
-  }, []);
+  }, [weddingCard?.images]);
 
   if (!allImagesLoaded || isLoading) return <Loading />;
   if (isError) return <div>Error</div>;
