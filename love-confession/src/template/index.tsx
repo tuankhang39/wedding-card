@@ -32,12 +32,12 @@ const data: WeddingDetail = {
   path: "path",
   template: "template1",
   brideParents: {
-    fatherName: "Nguyễn Văn Thành Đô",
-    motherName: "Nguyễn Thị Hồng Nhung",
+    fatherName: "Nguyễn Văn Thành",
+    motherName: "Nguyễn Thị Hồng",
   },
   groomParents: {
-    fatherName: "Lê Nguyễn Văn Quân",
-    motherName: "Trần Lệ Thu Hiền",
+    fatherName: "Lê Nguyễn Quân",
+    motherName: "Trần Thu Hiền",
   },
   organizationDay: tomorrow,
   venue: "Tư gia chúng tôi",
